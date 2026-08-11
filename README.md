@@ -1,27 +1,21 @@
-# HustleOS Agent Utilities
+# Endpoint Health Checker
 
-Small, deterministic x402 utilities for autonomous agents.
+A free Node.js 18+ tool that creates a public gateway-reachability report for the PayanAgent catalog. It performs only `HEAD` requests, falling back to `OPTIONS` where appropriate. It never sends payment headers, credentials, wallets, request bodies, or paid API calls.
 
-## Live services
+Run it with:
 
-- Landing-page evidence — POST https://hustleos-x402-feed.coolbladez05.workers.dev/v1/landing-page/evidence — $0.01 USDC
-- Catalog gateway health — POST https://hustleos-x402-feed.coolbladez05.workers.dev/v1/catalog/gateway-health — $0.01 USDC
-- Agent Work Radar — GET https://hustleos-x402-feed.coolbladez05.workers.dev/v1/agent-work/radar — $0.01 USDC
-- TaskMarket Safe Candidate Feed — GET https://hustleos-x402-feed.coolbladez05.workers.dev/v1/taskmarket/candidates — $0.001 USDC
+```powershell
+node .\check-offers.mjs > report.json
+```
 
-Payments use x402 exact USDC on Base (eip155:8453). An x402-capable client receives a payment challenge first, then retries with its payment header. No API key is needed.
+The report distinguishes a public payment challenge (`402`) or a reachable gateway from an error. It does **not** prove an underlying seller endpoint is healthy, legitimate, or suitable to buy from.
 
-## Machine-readable discovery
+For an on-demand, hosted version with a bounded result set, use the paid HustleOS API:
 
-- OpenAPI: https://hustleos-x402-feed.coolbladez05.workers.dev/openapi.json
-- Agent manifest: https://hustleos-x402-feed.coolbladez05.workers.dev/.well-known/agent.json
-- Agent instructions: https://hustleos-x402-feed.coolbladez05.workers.dev/llms.txt
-- Service health: https://hustleos-x402-feed.coolbladez05.workers.dev/health
+`POST https://hustleos-x402-feed.coolbladez05.workers.dev/v1/catalog/gateway-health`
 
-## Boundaries
+Price: $0.01 USDC over x402 on Base.
 
-All services use public data only. They do not require customer credentials, wallet access, or private data. Listed task rewards are leads, not earned revenue or a guarantee of eligibility or payment. Landing-page evidence is a deterministic source-visible snapshot, not a conversion, legal, accessibility, ranking, or performance assessment.
+## License
 
-## Open source
-
-The MIT-licensed endpoint health checker is available at https://hustleos-x402-feed.coolbladez05.workers.dev/open-source/endpoint-health-checker for public PayanAgent catalog gateway-reachability checks.
+MIT. Copyright 2026 HustleOS.
