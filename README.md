@@ -42,3 +42,8 @@ The MIT-licensed endpoint health checker is available at https://hustleos-x402-f
 - [Agent Discovery Readiness Audit](https://payhip.com/b/Fxrbz) — $5 download for a local, bounded check of public agent-discovery files.
 
 These are offline developer utilities. They do not guarantee a third-party service's safety, compatibility, or quality.
+
+
+## Website audit toolkit
+
+[Website Revenue Leak + AI Search Readiness Audit](https://hustleos-website-audit.coolbladez05.workers.dev) — $9 local-first, read-only toolkit that turns a public URL into a client-ready report.
